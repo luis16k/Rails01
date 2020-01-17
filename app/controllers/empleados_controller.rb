@@ -1,4 +1,5 @@
 class EmpleadosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_empleado, only: [:show, :edit, :update, :destroy]
 
   # GET /empleados
