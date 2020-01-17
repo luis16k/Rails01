@@ -4,8 +4,8 @@ class CreateSucursals < ActiveRecord::Migration[6.0]
       t.string :nombre
       t.string :calle
       t.string :colonia
-      t.string :numero_exterior
-      t.string :numero_interior
+      t.integer :numero_exterior
+      t.integer :numero_interior
       t.integer :codigo_postal
       t.string :ciudad
       t.string :pais
