@@ -4,18 +4,24 @@
     <title>ExamenDocumentosDigitales</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-  <div>
-  <% if signed_in? %>
-    <%= link_to "Salir", destroy_user_session_path, method: :delete %>
-    
-  <% end %>
-</div>
+    <div>
+      <% if signed_in? %>
+        <%= link_to "Salir", destroy_user_session_path, method: :delete %>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Inicio</a></li>
+              <li><a href="#">Registrar sucursal</a></li>
+              <li><a href="#">Registrar empleado</a></li>
+            </ul>
+          </div>
+        </nav>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
