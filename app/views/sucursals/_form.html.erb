@@ -1,0 +1,62 @@
+<%= form_with(model: sucursal, local: true) do |form| %>
+  <% if sucursal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sucursal.errors.count, "error") %> prohibited this sucursal from being saved:</h2>
+
+      <ul>
+        <% sucursal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calle %>
+    <%= form.text_field :calle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :colonia %>
+    <%= form.text_field :colonia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_exterior %>
+    <%= form.text_field :numero_exterior %>
+  </div>
+
+  <div class="field">
+    <%= form.label :numero_interior %>
+    <%= form.text_field :numero_interior %>
+  </div>
+
+  <div class="field">
+    <%= form.label :codigo_postal %>
+    <%= form.number_field :codigo_postal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ciudad %>
+    <%= form.text_field :ciudad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pais %>
+    <%= form.text_field :pais %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
