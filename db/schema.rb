@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_17_080741) do
+ActiveRecord::Schema.define(version: 2020_01_17_081707) do
+
+  create_table "empleados", force: :cascade do |t|
+    t.string "nombre_completo"
+    t.string "RFC"
+    t.string "puesto"
+    t.integer "sucursal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sucursal_id"], name: "index_empleados_on_sucursal_id"
+  end
+
+  create_table "sucursals", force: :cascade do |t|
+    t.string "nombre"
+    t.string "calle"
+    t.string "colonia"
+    t.integer "numero_exterior"
+    t.integer "numero_interior"
+    t.integer "codigo_postal"
+    t.string "ciudad"
+    t.string "pais"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sucursals_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +52,6 @@ ActiveRecord::Schema.define(version: 2020_01_17_080741) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "empleados", "sucursals"
+  add_foreign_key "sucursals", "users"
 end
