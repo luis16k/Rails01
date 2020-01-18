@@ -5,7 +5,7 @@ class SucursalsController < ApplicationController
   # GET /sucursals
   # GET /sucursals.json
   def index
-    @sucursals = Sucursal.all
+    @sucursals = Sucursal.where(user_id: current_user.id )
   end
 
   # GET /sucursals/1

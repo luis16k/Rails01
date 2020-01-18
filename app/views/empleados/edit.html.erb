@@ -3,19 +3,19 @@
 <%= form_for(@empleado) do |f| %>
   <div class="form-group">
     <%= f.label :nombre_completo %>
-    <%= f.text_field :nombre_completo, class: 'form-control' %>
+    <%= f.text_field :nombre_completo, class: 'form-control', required:'required' %>
   </div>
   <div class="form-group">
     <%= f.label :RFC %><br>
-    <%= f.text_field :RFC, class: 'form-control'  %>
+    <%= f.text_field :RFC, class: 'form-control', required:'required' %>
   </div>
   <div class="form-group">
     <%= f.label :puesto %><br>
-    <%= f.text_field :puesto, class: 'form-control'  %>
+    <%= f.text_field :puesto, class: 'form-control', required:'required' %>
   </div>
   <div class="form-group">
     <%= f.label :sucursal_id %><br>
-    <select name="empleado[sucursal_id]" id="empleado_sucursal_id" class="form-control">
+    <select name="empleado[sucursal_id]" id="empleado_sucursal_id" class="form-control" required="required">
       <% @sucursals.each do |sucursal| %>
         <% if  sucursal.id == @empleado.sucursal_id %>
           <option value= "<%= sucursal.id %>" selected><%= sucursal.nombre %> </option>

@@ -15,20 +15,20 @@ class EmpleadosController < ApplicationController
 
   # GET /empleados/new
   def new
-    @sucursals = Sucursal.all
+    @sucursals = Sucursal.where(user_id: current_user.id )
     @empleado = Empleado.new
   end
 
   # GET /empleados/1/edit
   def edit
-    @sucursals = Sucursal.all
+    @sucursals = Sucursal.where(user_id: current_user.id )
   end
 
   # POST /empleados
   # POST /empleados.json
   def create
     @empleado = Empleado.new(empleado_params)
-    @sucursals = Sucursal.all #Filtrar por usuario
+    @sucursals = Sucursal.where(user_id: current_user.id )
     respond_to do |format|
       if @empleado.save
         format.html { redirect_to :home_index}
