@@ -31,7 +31,7 @@ class EmpleadosController < ApplicationController
     @sucursals = Sucursal.all #Filtrar por usuario
     respond_to do |format|
       if @empleado.save
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully created.' }
+        format.html { redirect_to :home_index}
         format.json { render :show, status: :created, location: @empleado }
       else
         format.html { render :new }
