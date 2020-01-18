@@ -15,18 +15,20 @@ class EmpleadosController < ApplicationController
 
   # GET /empleados/new
   def new
+    @sucursals = Sucursal.all
     @empleado = Empleado.new
   end
 
   # GET /empleados/1/edit
   def edit
+    @sucursals = Sucursal.all
   end
 
   # POST /empleados
   # POST /empleados.json
   def create
     @empleado = Empleado.new(empleado_params)
-
+    @sucursals = Sucursal.all #Filtrar por usuario
     respond_to do |format|
       if @empleado.save
         format.html { redirect_to @empleado, notice: 'Empleado was successfully created.' }
@@ -43,7 +45,7 @@ class EmpleadosController < ApplicationController
   def update
     respond_to do |format|
       if @empleado.update(empleado_params)
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully updated.' }
+        format.html { redirect_to :home_index}
         format.json { render :show, status: :ok, location: @empleado }
       else
         format.html { render :edit }

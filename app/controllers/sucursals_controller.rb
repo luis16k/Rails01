@@ -20,16 +20,17 @@ class SucursalsController < ApplicationController
 
   # GET /sucursals/1/edit
   def edit
+    @empleados = Empleado.where(sucursal: @sucursal )
   end
 
   # POST /sucursals
   # POST /sucursals.json
   def create
     @sucursal = Sucursal.new(sucursal_params)
-
+    @sucursal.user_id = current_user.id  
     respond_to do |format|
       if @sucursal.save
-        format.html { redirect_to @sucursal, notice: 'Sucursal was successfully created.' }
+        format.html { redirect_to :home_index}
         format.json { render :show, status: :created, location: @sucursal }
       else
         format.html { render :new }
@@ -43,7 +44,7 @@ class SucursalsController < ApplicationController
   def update
     respond_to do |format|
       if @sucursal.update(sucursal_params)
-        format.html { redirect_to @sucursal, notice: 'Sucursal was successfully updated.' }
+        format.html { redirect_to :home_index}
         format.json { render :show, status: :ok, location: @sucursal }
       else
         format.html { render :edit }
@@ -70,6 +71,6 @@ class SucursalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sucursal_params
-      params.require(:sucursal).permit(:nombre, :calle, :colonia, :numero_exterior, :numero_interior, :codigo_postal, :ciudad, :pais, :user_id)
+      params.require(:sucursal).permit(:nombre, :calle, :colonia, :numero_exterior, :numero_interior, :codigo_postal, :ciudad, :pais)
     end
 end

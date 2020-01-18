@@ -1,6 +1,59 @@
-<h1>Editing Sucursal</h1>
+<h1>Editar Sucursal</h1>
 
-<%= render 'form', sucursal: @sucursal %>
+<br>
 
-<%= link_to 'Show', @sucursal %> |
-<%= link_to 'Back', sucursals_path %>
+<%= form_for(@sucursal) do |f| %>
+  <div class="form-group">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre, class: 'form-control' %>
+   </div>
+  <div class="form-group">
+    <%= f.label :calle %><br>
+    <%= f.text_field :calle, class: 'form-control'  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :colonia %><br>
+    <%= f.text_field :colonia, class: 'form-control'  %>
+  </div>
+    <div class="form-group">
+    <%= f.label :numero_exterior %><br>
+    <%= f.text_field :numero_exterior, class: 'form-control'  %>
+  </div>
+      <div class="form-group">
+    <%= f.label :numero_interior %><br>
+    <%= f.text_field :numero_interior, class: 'form-control'  %>
+  </div>
+      <div class="form-group">
+    <%= f.label :codigo_postal %><br>
+    <%= f.text_field :codigo_postal, class: 'form-control'  %>
+  </div>
+        <div class="form-group">
+    <%= f.label :pais %><br>
+    <%= f.text_field :pais, class: 'form-control'  %>
+  </div>
+  <p>
+    <%= f.submit "Guardar", class: 'btn btn-success' %>
+  </p>
+<% end %>
+
+<h1>Empleados</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nombre completo</th>
+      <th scope="col">RFC</th>
+      <th scope="col" >Puesto</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @empleados.each do |empleado| %>
+      <tr>
+        <td><%= empleado.nombre_completo %></td>
+        <td><%= empleado.RFC %></td>
+        <td><%= empleado.puesto %></td>
+        <td><%= link_to 'Editar', edit_empleado_path(empleado) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
